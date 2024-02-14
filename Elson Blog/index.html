@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Navigation</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="/">
+                    <!-- Insert your logo image or text here -->
+                    <img src="images/eccomi.gif" alt="Logo">
+                </a>
+            </div>
+            <div class="hamburger-menu" onclick="toggleHamburgerMenu()">
+                <!-- Hamburger icon -->
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Add page content here -->
+
+    <script>
+        function toggleHamburgerMenu() {
+            // JavaScript to toggle the hamburger menu
+            var navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+        }
+    </script>
+
+        <!--Founders Section-->
+        <section class="founders-section">
+            <div class="images-container">
+                <img src="images/jei.jpg" alt="Founder 1" class="founder-image">
+                <img src="images/Elena.jpg" alt="Founder 2" class="founder-image">
+            </div>
+            <div class="text-container">
+                <h2>Hi, beautiful!</h2>
+                <p>
+                    If you're reading this, that means that you stumbled upon  Elson's personal blog! This is a place where he can share core memories with the woman he's falling in love with, IF YOU'RE NOT ELENA GTFO. If you're Elena, hi pookie :*
+                </p>
+            <!-- Accordion starts here -->
+            <div class="accordion-container">
+                <div class="accordion-item">
+                    <button class="accordion-trigger" onclick="toggleAccordion(event, 'founder1-info')">02/14/24 - Valentines Day</button>
+                    <div class="accordion-content" id="founder1-info">
+                        <p>
+                            For Elena and Jei's first Valentine's together: Click on the button if your name is Elena. ty.
+                        </p>
+                        <!-- New Button for redirection -->
+                        <button onclick="window.location.href='valentine.html';">Click me, cutie <3</button>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-trigger" onclick="toggleAccordion(event, 'founder2-info')">02/26/24 - 03/02/24: NYC w/ Pookie</button>
+                    <div class="accordion-content" id="founder2-info">
+                        <p>
+                            <!-- Content for NYC trip -->
+                        </p>
+                        <!-- New Button for redirection -->
+                        <button onclick="window.location.href='comingsoon.html';">Click me, cutie <3</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Accordion ends here -->
+
+            <script>
+                // JavaScript function to toggle accordion content
+                function toggleAccordion(event, id) {
+                    const element = document.getElementById(id);
+                    const items = document.querySelectorAll('.accordion-content');
+                    for (const item of items) {
+                        if (item.id !== id) {
+                            item.style.maxHeight = null;
+                        }
+                    }
+                    if (element.style.maxHeight) {
+                        element.style.maxHeight = null;
+                    } else {
+                        element.style.maxHeight = element.scrollHeight + "px";
+                    }
+                }
+            </script>
+
+            </div>
+        </section>        
+
+        <script>
+            function toggleAccordion(event, panelId) {
+                var accordion = event.target;
+                var content = document.getElementById(panelId);
+                var isCurrentlyActive = accordion.classList.contains('active');
+
+                // Close all accordions and remove active class
+                var allAccordions = document.getElementsByClassName('accordion-trigger');
+                var allContents = document.getElementsByClassName('accordion-content');
+                for (var i = 0; i < allAccordions.length; i++) {
+                    allAccordions[i].classList.remove('active');
+                    allContents[i].style.maxHeight = null;
+                }
+
+                // Toggle the clicked accordion if it was not already active
+                if (!isCurrentlyActive) {
+                    accordion.classList.add('active');
+                    content.style.maxHeight = content.scrollHeight + "px";
+                }
+            }
+        </script>
+
+        <!--Founders Section End-->
+</body>
+</html>
